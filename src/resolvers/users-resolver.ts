@@ -29,12 +29,9 @@ export class UsersResolvers {
   async deleteUser(@Arg('id') id: String) {
     const index = users.findIndex(item => item.id === id)
 
-    if (index !== -1) {
-      const deletedUser = users.splice(index, 1)[0]
-      return deletedUser
-    } else {
-      throw new Error('Usuario no encontrado')
-    }
+    if (index !== -1) throw new Error('Usuario no encontrado')
+
+    return users.splice(index, 1)[0]
   }
 
   @Mutation(() => User)
