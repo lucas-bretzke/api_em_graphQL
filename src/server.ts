@@ -2,11 +2,11 @@ import 'reflect-metadata'
 import path from 'node:path'
 import { ApolloServer } from 'apollo-server'
 import { buildSchema } from 'type-graphql'
-import { AppointmentsResolver } from './resolvers/appointments-resolver'
+import { UsersResolvers } from './resolvers/users-resolver'
 
 async function main() {
   const schema = await buildSchema({
-    resolvers: [AppointmentsResolver],
+    resolvers: [UsersResolvers],
     emitSchemaFile: path.resolve(__dirname, 'schema.gql')
   })
 

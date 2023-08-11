@@ -1,10 +1,13 @@
 import { Field, ObjectType } from 'type-graphql'
 
 @ObjectType()
-export class Appoiment {
+export class User {
   @Field()
-  startAt: Date
+  id: string
 
   @Field()
-  endsAt: Date
+  name: string
+  
+  @Field()
+  phone: string
 }

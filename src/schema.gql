@@ -3,26 +3,29 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-type Appoiment {
-  endsAt: DateTime!
-  startAt: DateTime!
+input CreateUserInput {
+  name: String!
+  phone: String!
 }
 
-input CreateAppoimentInput {
-  customerId: String!
-  endsAt: DateTime!
-  startAt: DateTime!
+input EditUser {
+  id: String!
+  name: String!
+  phone: String!
 }
-
-"""
-The javascript `Date` as string. Type represents date and time as the ISO Date string.
-"""
-scalar DateTime
 
 type Mutation {
-  createAppoiment(data: CreateAppoimentInput!): Appoiment!
+  createUser(user: CreateUserInput!): User!
+  deleteUser(id: String!): User!
+  editUser(user: EditUser!): User!
 }
 
 type Query {
-  helloWord: String!
+  getUsers: [User!]!
+}
+
+type User {
+  id: String!
+  name: String!
+  phone: String!
 }

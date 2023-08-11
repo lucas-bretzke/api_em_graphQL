@@ -5,6 +5,7 @@ const typeDefs = gql`
   type User {
     id: String
     name: String!
+    phone: String!
   }
 
   type Query {
@@ -12,13 +13,14 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createUser(name: String!): User!
+    createUser(name: String!, phone: String!): User!
   }
 `
 
 interface User {
   id: string
   name: string
+  phone: string
 }
 const users: User[] = []
 
@@ -32,7 +34,7 @@ const server = new ApolloServer({
     },
     Mutation: {
       createUser: (parent: any, args: any, ctx: any) => {
-        const user = { id: randomUUID(), name: args.name }
+        const user = { id: randomUUID(), name: args.name, phone: args.phone }
         users.push(user)
         return user
       }
